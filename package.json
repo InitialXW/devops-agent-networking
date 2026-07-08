@@ -1,0 +1,24 @@
+{
+  "name": "devops-agent-networking",
+  "version": "0.1.0",
+  "bin": {
+    "devops-agent-networking": "bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "aws-cdk": "2.1128.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.260.0",
+    "constructs": "^10.5.0",
+    "dotenv": "^17.4.2",
+    "source-map-support": "^0.5.21"
+  }
+}

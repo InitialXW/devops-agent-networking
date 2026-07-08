@@ -1,0 +1,1 @@
+{"httpMethod":"POST","body":"{\"jsonrpc\":\"2.0\",\"id\":9,\"method\":\"tools/call\",\"params\":{\"name\":\"tcp_reachability\",\"arguments\":{\"host\":\"db.corp.internal; rm -rf /\",\"port\":5432}}}"}

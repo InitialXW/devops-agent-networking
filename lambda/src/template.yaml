@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Lambda functions for DevOps Agent Network Diagnostics MCP
+
+Globals:
+  Function:
+    Architectures:
+        - x86_64
+        # - arm64
+
+Resources:
+  # MCP tool-router: runs fixed network probes on the EC2 probe host via SSM,
+  # returns structured findings. Python; no Metadata needed (SAM uses requirements.txt).
+  NetDiagMcp:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: handlers/netdiag-mcp/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Timeout: 30
+      MemorySize: 128
+      Environment:
+        Variables:
+          PROBE_INSTANCE_ID: "string"
+          SSM_POLL_TIMEOUT_S: "20"
+          ATHENA_DATABASE: "string"
+          ATHENA_TABLE: "string"
+          ATHENA_WORKGROUP: "string"
+          ATHENA_POLL_TIMEOUT_S: "25"
