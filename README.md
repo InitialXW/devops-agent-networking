@@ -105,7 +105,7 @@ Tested on macOS and Linux (the `scripts/` are bash and use `aws` + `jq`; on Wind
 
 | Tool | Version |
 |------|---------|
-| AWS CLI | v2 (`aws --version` >= 2.x) |
+| AWS CLI | >= 2.35.9 (`aws devops-agent` subcommand required; upgrade with the [official installer](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) if `aws --version` is older or `aws devops-agent help` fails) |
 | Node.js | >= 20 |
 | AWS CDK | v2 (`npm i -g aws-cdk`, >= 2.140) |
 | Python | 3.12 |
@@ -120,6 +120,15 @@ Tested on macOS and Linux (the `scripts/` are bash and use `aws` + `jq`; on Wind
   ```bash
   cp .env.example .env
   # then edit CDK_PROCESSING_ACCOUNT / CDK_PROCESSING_REGION
+  ```
+- Install project dependencies (required once after cloning):
+  ```bash
+  npm install
+  ```
+- Bootstrap CDK in your target account/region (required once per account/region, before first deploy):
+  ```bash
+  source .env
+  cdk bootstrap aws://${CDK_PROCESSING_ACCOUNT}/${CDK_PROCESSING_REGION} --profile <your-profile>
   ```
 
 ## Cost
