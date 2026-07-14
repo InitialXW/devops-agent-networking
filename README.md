@@ -149,12 +149,12 @@ for your region):
 **Charges accrue until you tear down** — run `scripts/teardown.sh` when finished (see below).
 
 **Cost-saving tip:** if you need to pause between demo runs, you can **stop** (not terminate)
-both EC2 instances to eliminate the compute charge. Stop/start is safe: private IPs are preserved
+both EC2 instances to eliminate the compute charge. Stop/start has private IPs preserved
 (so `db.corp.internal` keeps resolving correctly), the SSM IAM policy targets instance IDs (which
 never change), and the diagnostic tool binaries and nginx survive on the EBS volume across stop/start.
 
 After starting the instances again, wait ~1–2 minutes before running any scripts or demo prompts —
-the SSM agent needs a moment to re-register after boot. You can confirm both are ready with:
+the SSM agent needs some time to re-register after boot. You can confirm both are ready with:
 
 ```bash
 aws ssm describe-instance-information \
